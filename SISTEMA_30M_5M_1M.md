@@ -83,15 +83,7 @@ else:
 
 ---
 
-## 3. Reglas de Trading
 
-### 3.1 ALWAYS_IN_MARKET
-
-✅ **Activado**: El bot siempre busca estar en mercado
-- Si `state.position is None` y `desired_dir != 0` → Abre posición inmediatamente
-- No espera señales perfectas, actúa con consenso mínimo
-
-### 3.2 Mantener Posición
 
 Mientras `posicion.direccion == desired_dir`:
 - Recalcula SL/TP según régimen (MICRO/NORMAL/EXPLOSIVE) y ATR
@@ -129,20 +121,20 @@ Y en la vela siguiente `desired_dir` sigue igual:
 
 ### 4.1 Robustez Multi-Timeframe
 
-✅ **PSAR 30m manda**: No se ensucia con ruido de timeframes cortos
-✅ **Bias 5m confirma**: Detecta correcciones intradía vs tendencia macro
-✅ **Bias 1m afina**: Timing preciso sin sobrerreaccionar
+**PSAR 30m manda**: No se ensucia con ruido de timeframes cortos
+**Bias 5m confirma**: Detecta correcciones intradía vs tendencia macro
+**Bias 1m afina**: Timing preciso sin sobrerreaccionar
 
 ### 4.2 Protección contra Flips Tontos
 
-❌ **No cambia de lado por cualquier flip en 1m**
-✅ **Solo flip cuando 30m y 5m están alineados en contra** (score ≥ 4 opuesto)
+ **No cambia de lado por cualquier flip en 1m**
+**Solo flip cuando 30m y 5m están alineados en contra** (score ≥ 4 opuesto)
 
 ### 4.3 Maximiza Tiempo en Mercado
 
-✅ **ALWAYS_IN_MARKET**: No se queda fuera esperando señal perfecta
-✅ **Reapertura rápida**: Vuelve a entrar tras exits técnicos si tendencia persiste
-✅ **Mantiene dirección en zona gris**: No sale por indecisión temporal
+ **ALWAYS_IN_MARKET**: No se queda fuera esperando señal perfecta
+ **Reapertura rápida**: Vuelve a entrar tras exits técnicos si tendencia persiste
+ **Mantiene dirección en zona gris**: No sale por indecisión temporal
 
 ---
 
